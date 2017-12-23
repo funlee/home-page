@@ -7,9 +7,17 @@
  */
 import $ from 'jquery'
 import './js/iconfont'
-// import helloHbs from './hbs/hello.hbs'
 import './style/common.less'
 import './style/app.less'
 
+const playTitle = require('./js/playTitle.js')
 
-// $('.app').append(helloHbs())
+import home from './hbs/home.hbs'
+
+window.onload = function() {
+  playTitle()
+  $('body').append(home())
+  setTimeout(() => {
+    $('.layer').remove()
+  }, 500);
+}

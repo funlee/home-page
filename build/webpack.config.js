@@ -18,8 +18,9 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '../dist/'),
-    filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/',
+    filename: 'static/js/[name].[hash].js',
+    chunkFilename: 'static/js/[id].[hash].js'
   },
   devtool: '#cheap-module-eval-source-map',
   devServer: {
@@ -47,52 +48,52 @@ module.exports = {
   ],
   module: {
     rules: [{
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            plugins: [
-              require("autoprefixer")({
-                browsers: ["last 2 versions"]
-              })
-            ]
-          }
-        }]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader'
-        ]
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.hbs$/,
-        loader: 'handlebars-loader',
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader', {
+        loader: 'postcss-loader',
         options: {
-          inlineRequires: /\.(png|svg|jpg|gif)$/,
+          plugins: [
+            require("autoprefixer")({
+              browsers: ["last 2 versions"]
+            })
+          ]
         }
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 3000
-        }
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 3000
-        }
+      }]
+    },
+    {
+      test: /\.less$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'less-loader'
+      ]
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+    },
+    {
+      test: /\.hbs$/,
+      loader: 'handlebars-loader',
+      options: {
+        inlineRequires: /\.(png|svg|jpg|gif)$/,
       }
+    },
+    {
+      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 3000
+      }
+    },
+    {
+      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 3000
+      }
+    }
     ]
   }
 }

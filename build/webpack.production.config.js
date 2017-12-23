@@ -18,8 +18,9 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '../dist/'),
-    filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/',
+    filename: 'static/js/[name].[hash].js',
+    chunkFilename: 'static/js/[id].[hash].js'
   },
   devtool: '#source-map',
   devServer: {
