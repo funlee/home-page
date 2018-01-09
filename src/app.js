@@ -10,7 +10,7 @@ import './js/iconfont'
 import './style/common.less'
 import './style/app.less'
 
-const playTitle = require('./js/playTitle.js')
+const playTitle = require('play-title')
 
 import home from './hbs/home.hbs'
 
